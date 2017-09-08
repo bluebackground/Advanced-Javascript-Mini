@@ -1,22 +1,53 @@
 /* The four rules for 'this';
 * in your own words. explain the four rules for the "this" keyword below.
-* 1. 'this' keyword references the object when it is called from an object's method.
-* 2. 'this' keyword is in the constructor of a class.
-* 3.
-* 4. possible to call bind(this) in the constructor.
+* 1. 'this' keyword references the object when it is called from an object's method. Looks to the left of the function call.
+* 2. 'this' keyword is in the constructor of a class. 'this' references the object instantiated with the 'new' keyword.
+* 3. 'this' will use the context when bind() is used to explicitly set the context.
+* 4. Otherwise it is the global object, window or process.
 * write out a code example of each explanation above
 */
 
-// First Rule
+// 1.) First Rule
+/*
 
-// Second Rule
+let me = {
+  name: "Jonathan",
+  sayName: function () {
+    console.log(`${this.name}`);
+  }
+}
 
-// Third Rule
+me.sayName();
 
-// Fourth Rule * you may want to use your third rule's example to accomplish this
+*/
+// 2.) Second Rule
+/*
 
-// explain closure:
-// Accessing variables outside of the immediate lexical scope creates a closure. In other words, a closure is formed when a nested function is defined inside of another function, allowing access to the outer functions variables. A closure is the combination of a function bundled together (enclosed) with references to its surrounding state (the lexical environment). In other words, a closure gives you access to an outer function’s scope from an inner function.
+let me = function(name) {
+  this.name = name;
+}
+
+*/
+
+// 3.) Third Rule
+/*
+
+console.log(me.sayName.bind(you, "Another person")());
+
+*/
+
+// 4.) Fourth Rule * you may want to use your third rule's example to accomplish this
+/*
+
+let newFunc = me.sayHi;
+newFunc();
+
+// Will return undefined because this will reference the global object.
+
+*/
+
+/* explain closure: */
+/* Accessing variables outside of the immediate lexical scope creates a closure. In other words, a closure is formed when a nested function is defined inside of another function, allowing access to the outer functions variables. A closure is the combination of a function bundled together (enclosed) with references to its surrounding state (the lexical environment). In other words, a closure gives you access to an outer function’s scope from an inner function. */
 
 // “Can you name two common uses for closures?”
 // 1. Cache functions.
